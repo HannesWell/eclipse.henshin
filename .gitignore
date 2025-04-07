@@ -3,7 +3,12 @@
 *._trace
 .settings/
 bin/
+
 target/
+.polyglot*
+.tycho-consumer-pom.xml
+pom.tycho
+
 /.metadata/
 /plugins/org.eclipse.emf.henshin.text/src-gen/
 /plugins/org.eclipse.emf.henshin.text/xtend-gen/
