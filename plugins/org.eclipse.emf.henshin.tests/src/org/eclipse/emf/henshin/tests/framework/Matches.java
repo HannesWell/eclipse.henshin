@@ -23,7 +23,6 @@ import org.eclipse.emf.henshin.interpreter.RuleApplication;
 import org.eclipse.emf.henshin.interpreter.UnitApplication;
 import org.eclipse.emf.henshin.interpreter.util.InterpreterUtil;
 import org.eclipse.emf.henshin.model.Rule;
-import org.junit.internal.runners.statements.Fail;
 
 /**
  * Assertions for everything related to matches, e.g. matches produced by {@link RuleApplication}s,

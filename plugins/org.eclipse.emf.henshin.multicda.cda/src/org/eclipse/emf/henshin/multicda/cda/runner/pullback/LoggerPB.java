@@ -7,7 +7,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -80,8 +79,8 @@ public class LoggerPB {
 //			String ruleDetails = (addDetailsOnRuleName == true) ? analyseDetailsOfRule(rule1) : "";
 			runtimeResults[rowPosition][0] = rule1.getName();// + ruleDetails;  
 			numberOfDeleteUseConflicts[rowPosition][0] = rule1.getName();// + ruleDetails;
-			runtimeResults[rowPosition][1] = runtime;// das sind hier die Metriken zur jeweiligen Regel und dies wird für jede Regel nur einmal zu Beginn eingetragen!  
-			numberOfDeleteUseConflicts[rowPosition][1] = results;// das sind hier die Metriken zur jeweiligen Regel und dies wird für jede Regel nur einmal zu Beginn eingetragen!
+			runtimeResults[rowPosition][1] = runtime;// das sind hier die Metriken zur jeweiligen Regel und dies wird fï¿½r jede Regel nur einmal zu Beginn eingetragen!  
+			numberOfDeleteUseConflicts[rowPosition][1] = results;// das sind hier die Metriken zur jeweiligen Regel und dies wird fï¿½r jede Regel nur einmal zu Beginn eingetragen!
 		}
 		Integer columnPosition = null;
 		if(rule2 == null){
@@ -95,8 +94,8 @@ public class LoggerPB {
 //			String ruleDetails = analyseDetailsOfRule(rule2);
 				runtimeResults[0][columnPosition] = rule2.getName();// + ruleDetails;
 				numberOfDeleteUseConflicts[0][columnPosition] = rule2.getName();// + ruleDetails;
-				runtimeResults[1][columnPosition] = runtime;// das sind hier die Metriken zur jeweiligen Regel und dies wird für jede Regel nur einmal zu Beginn eingetragen!  
-				numberOfDeleteUseConflicts[1][columnPosition] = results;// das sind hier die Metriken zur jeweiligen Regel und dies wird für jede Regel nur einmal zu Beginn eingetragen!
+				runtimeResults[1][columnPosition] = runtime;// das sind hier die Metriken zur jeweiligen Regel und dies wird fï¿½r jede Regel nur einmal zu Beginn eingetragen!  
+				numberOfDeleteUseConflicts[1][columnPosition] = results;// das sind hier die Metriken zur jeweiligen Regel und dies wird fï¿½r jede Regel nur einmal zu Beginn eingetragen!
 			}
 			runtimeResults[rowPosition][columnPosition] = runtime;
 			numberOfDeleteUseConflicts[rowPosition][columnPosition] = results;
