@@ -2,19 +2,17 @@ package org.eclipse.emf.henshin.text.tests.formatting
 
 import javax.inject.Inject
 import org.eclipse.emf.henshin.text.formatting2.Henshin_textFormatter
-import org.eclipse.emf.henshin.text.henshin_text.Model
 import org.eclipse.emf.henshin.text.tests.Henshin_textInjectorProvider
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.formatter.FormatterTester
-import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.formatter.FormatterTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(Henshin_textInjectorProvider))
-class FormulaFormattingTests extends FormatterTester {
-	@Inject extension ParseHelper<Model>
+class FormulaFormattingTests {
+	@Inject extension FormatterTestHelper
 
 	@Inject extension Henshin_textFormatter;
 
