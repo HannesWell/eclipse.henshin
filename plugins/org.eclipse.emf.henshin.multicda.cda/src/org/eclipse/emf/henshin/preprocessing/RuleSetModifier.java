@@ -7,13 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.henshin.model.Action;
 import org.eclipse.emf.henshin.model.Edge;
 import org.eclipse.emf.henshin.model.Formula;
 import org.eclipse.emf.henshin.model.HenshinFactory;
-import org.eclipse.emf.henshin.model.Mapping;
 import org.eclipse.emf.henshin.model.MappingList;
 import org.eclipse.emf.henshin.model.Module;
 import org.eclipse.emf.henshin.model.Node;
@@ -164,7 +162,7 @@ public class RuleSetModifier {
 		for(Rule rule : rules){
 			Copier copier = new Copier();
 			Rule copiedRule = (Rule) copier.copy(rule);
-			// soll die kopierte Regel auch Teil des Module sein? für den nachfolgenden Export vermutlich nicht verkehrt, aber wirklich gewollt? 
+			// soll die kopierte Regel auch Teil des Module sein? fï¿½r den nachfolgenden Export vermutlich nicht verkehrt, aber wirklich gewollt? 
 			copier.copyReferences();
 			copyOfRules.add(copiedRule);
 			transformDeleteToPreserve(copiedRule, true);

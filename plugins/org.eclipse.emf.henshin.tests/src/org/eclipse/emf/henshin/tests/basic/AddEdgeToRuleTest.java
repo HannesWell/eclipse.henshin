@@ -16,16 +16,13 @@ import org.eclipse.emf.henshin.model.Action;
 import org.eclipse.emf.henshin.model.Edge;
 import org.eclipse.emf.henshin.model.Node;
 import org.eclipse.emf.henshin.tests.framework.HenshinTest;
-import org.eclipse.emf.henshin.tests.framework.Rules;
-import org.eclipse.emf.henshin.tests.framework.Tools;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Tests creating edges in an existing rule.
  * 
- * @author Daniel STrüber
+ * @author Daniel STrï¿½ber
  * 
  */
 public class AddEdgeToRuleTest extends HenshinTest {
