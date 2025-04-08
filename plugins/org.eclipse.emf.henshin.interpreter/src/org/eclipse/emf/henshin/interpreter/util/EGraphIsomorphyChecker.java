@@ -1,6 +1,6 @@
 /**
  * <copyright>
- * Copyright (c) 2010-2014 Henshin developers. All rights reserved. 
+ * Copyright (c) 2010-2025 Henshin developers. All rights reserved.
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
  * accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
@@ -33,6 +32,7 @@ import org.eclipse.emf.henshin.interpreter.matching.constraints.ReferenceConstra
 import org.eclipse.emf.henshin.interpreter.matching.constraints.Solution;
 import org.eclipse.emf.henshin.interpreter.matching.constraints.SolutionFinder;
 import org.eclipse.emf.henshin.interpreter.matching.constraints.Variable;
+import org.eclipse.emf.henshin.model.util.ScriptEngineWrapper;
 
 /**
  * A graph isomorphy checker for {@link EGraph}s.
@@ -46,7 +46,7 @@ public class EGraphIsomorphyChecker {
 
 	// Initialize static members:
 	static {
-		ScriptEngine engine = new ScriptEngineManager().getEngineByName("JavaScript");
+		ScriptEngine engine = ScriptEngineWrapper.getJavaScriptEngine();
 		ATTRIBUTE_CONDITION_HANDLER = new ConditionHandler(new HashMap<String, Collection<String>>(), engine);
 	}
 
