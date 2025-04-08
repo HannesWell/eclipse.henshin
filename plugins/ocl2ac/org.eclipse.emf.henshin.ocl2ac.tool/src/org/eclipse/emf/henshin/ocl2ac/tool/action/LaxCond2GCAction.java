@@ -139,7 +139,7 @@ public class LaxCond2GCAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param cond
 	 *            of LaxconditionPackage
 	 * @return
@@ -177,7 +177,7 @@ public class LaxCond2GCAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param arrayListNestedConstraints
 	 */
 	private void simplifyNestedConstraints(List<NestedConstraint> arrayListNestedConstraints) {
@@ -192,7 +192,7 @@ public class LaxCond2GCAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param translator
 	 * @param arrayListLaxConditions
 	 * @return
@@ -221,7 +221,7 @@ public class LaxCond2GCAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param arrayListLaxConditions
 	 */
 	private void simplifyLaxConditions(List<Condition> arrayListLaxConditions) {
@@ -239,7 +239,7 @@ public class LaxCond2GCAction implements IObjectActionDelegate {
 	// TODO add variables to LaxCondition. I added. To be tested
 	/**
 	 * Add variables to the completed nested condition
-	 * 
+	 *
 	 * @param nestedCondition
 	 * @param conditionVarNames
 	 */
@@ -253,7 +253,7 @@ public class LaxCond2GCAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param date
 	 * @param nestedConstraintModel
 	 */
@@ -273,7 +273,7 @@ public class LaxCond2GCAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private boolean checkFile() {
@@ -285,7 +285,6 @@ public class LaxCond2GCAction implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
-	@SuppressWarnings("unchecked")
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection ss = (StructuredSelection) selection;
