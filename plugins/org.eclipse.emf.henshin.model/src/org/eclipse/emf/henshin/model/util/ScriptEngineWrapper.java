@@ -1,6 +1,6 @@
 /**
  * <copyright>
- * Copyright (c) 2010-2014 Henshin developers. All rights reserved. 
+ * Copyright (c) 2010-2025 Henshin developers. All rights reserved.
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
  * accompanies this distribution, and is available at
@@ -12,12 +12,19 @@ package org.eclipse.emf.henshin.model.util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.ServiceConfigurationError;
+import java.util.ServiceLoader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.script.ScriptContext;
 import javax.script.ScriptEngine;
+import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import javax.script.SimpleBindings;
 
 /**
  * Script engine wrapper for automatic handling of Java imports.
@@ -27,9 +34,8 @@ public class ScriptEngineWrapper {
 	private static final Pattern WILDCARD_PATTERN = Pattern.compile("(.*)\\.\\*$");
 
 	private static final Pattern DIR_FQN_PATTERN = Pattern.compile("(.*)\\.([a-z][^.]*)*$");
-	
+
 	private static final Pattern CLASS_FQN_PATTERN = Pattern.compile("(.*)\\.([A-Z][^.]*)$");
-	
 
 	/**
 	 * The original scripting engine to delegate to.
@@ -48,15 +54,12 @@ public class ScriptEngineWrapper {
 	 * @param globalImports List of global Java imports.
 	 */
 	public ScriptEngineWrapper(ScriptEngine engine, String[] globalImports) {
-		this.engine = engine;
+		this.engine = Objects.requireNonNull(engine, "Cannot find JavaScript engine");
 		this.globalImports = new ArrayList<String>();
 		if (globalImports != null) {
 			for (int i = 0; i < globalImports.length; i++) {
 				this.globalImports.add(globalImports[i]);
 			}
-		}
-		if (engine == null) {
-			System.err.println("Warning: cannot find JavaScript engine");
 		}
 	}
 
@@ -66,7 +69,39 @@ public class ScriptEngineWrapper {
 	 * @param globalImports List of global Java imports.
 	 */
 	public ScriptEngineWrapper(String[] globalImports) {
-		this(new ScriptEngineManager().getEngineByName("JavaScript"), globalImports);
+		this(getJavaScriptEngine(), globalImports);
+	}
+
+	public static ScriptEngine getJavaScriptEngine() {
+		String selector = "JavaScript";
+		//TODO: somehow this doesn't work...
+		ScriptEngine scriptEngine = ServiceLoader.load(ScriptEngineFactory.class).stream().map(provider -> {
+			try {
+				return provider.get();
+			} catch (ServiceConfigurationError err) {
+				// one factory failed, but check other factories...
+				return null;
+			}
+		}).filter(factory -> {
+			return Optional.ofNullable(factory).map(ScriptEngineFactory::getNames).orElse(List.of()).contains(selector);
+		}).map(spi -> {
+			try {
+				ScriptEngine engine = spi.getScriptEngine();
+				engine.setBindings(new SimpleBindings(), ScriptContext.GLOBAL_SCOPE);
+				return engine;
+			} catch (Exception exp) {
+				return null;
+			}
+		}).findFirst().orElse(null);
+
+		Thread thread = Thread.currentThread();
+		ClassLoader contextClassLoader = thread.getContextClassLoader();
+		try {
+			thread.setContextClassLoader(ScriptEngineWrapper.class.getClassLoader());
+			return new ScriptEngineManager().getEngineByName(selector);
+		} finally {
+			thread.setContextClassLoader(contextClassLoader);
+		}
 	}
 
 	/**

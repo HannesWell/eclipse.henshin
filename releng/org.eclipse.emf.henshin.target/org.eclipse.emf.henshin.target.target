@@ -4,7 +4,9 @@
 	<locations>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<unit id="de.tuberlin.eecs.agg"/>
+			<unit id="org.apache.aries.spifly.dynamic.bundle"/>
 			<repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20181128170323/repository/"/>
+			<repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/milestone/S202504030806"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<unit id="org.eclipse.sdk.feature.group"/>
@@ -18,7 +20,34 @@
 			<unit id="org.eclipse.emf.query.sdk.feature.group"/>
 			<unit id="org.eclipse.xtext.sdk.feature.group"/>
 			<unit id="org.apache.commons.io"/>
-			<repository location="https://download.eclipse.org/releases/2018-12/"/>
+			<unit id="org.objectweb.asm.util"/>
+			<unit id="org.objectweb.asm.commons"/>
+			<!-- TODO: Directly move to 2021-12 to support Java-17 in the test runtime? Then also lift all lower bounds?! or even to 2023-06 to replace elements that are gone in the latest release -->
+			<repository location="https://download.eclipse.org/releases/2020-12/"/>
+		</location>
+		<location includeDependencyDepth="none" includeDependencyScopes="compile" includeSource="true" label="JDK-Nashorn" missingManifest="generate" type="Maven">
+			<dependencies>
+				<dependency>
+					<groupId>org.openjdk.nashorn</groupId>
+					<artifactId>nashorn-core</artifactId>
+					<version>15.6</version>
+					<type>jar</type>
+				</dependency>
+			</dependencies>
+			<instructions><![CDATA[
+asmUpperBound:         10
+version:               ${version_cleanup;${mvnVersion}}
+Bundle-Name:           Bundle derived from maven artifact ${mvnGroupId}:${mvnArtifactId}:${mvnVersion}
+Bundle-SymbolicName:   ${replacestring;org.openjdk.${mvnArtifactId};-;.}
+Bundle-Version:        ${version}
+Import-Package:        org.objectweb.asm*; version="[${versionmask;==;${@}},${asmUpperBound})",*
+Export-Package:        *;version="${version}";-noimport:=true
+# ServiceLoader mediator configuration
+Provide-Capability: \
+ osgi.serviceloader;osgi.serviceloader="javax.script.ScriptEngineFactory",\
+ osgi.service;objectClass:List<String>="javax.script.ScriptEngineFactory";effective:=active
+Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.serviceloader.registrar)(version>=1.0.0)(!(version>=2.0.0)))"
+]]></instructions>
 		</location>
 	</locations>
 </target>
