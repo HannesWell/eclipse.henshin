@@ -1,8 +1,8 @@
 /**
  * <copyright>
- * Copyright (c) 2010-2016 Henshin developers. All rights reserved. 
- * This program and the accompanying materials are made available 
- * under the terms of the Eclipse Public License v1.0 which 
+ * Copyright (c) 2010-2016 Henshin developers. All rights reserved.
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0 which
  * accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
@@ -29,7 +29,7 @@ import org.eclipse.ui.IEditorPart;
  * This class may be instantiated; it is not intended to be subclassed. The base implementation of
  * <code>MultiPageEditor.init</code> creates an instance of this class.
  * </p>
- * 
+ *
  * @noextend This class is not intended to be subclassed by clients.
  */
 public class MultiEditorSelectionProvider implements IPostSelectionProvider {
@@ -37,12 +37,12 @@ public class MultiEditorSelectionProvider implements IPostSelectionProvider {
 	/**
 	 * Registered selection changed listeners (element type: <code>ISelectionChangedListener</code>).
 	 */
-	private ListenerList listeners = new ListenerList();
+	private ListenerList<ISelectionChangedListener> listeners = new ListenerList<>();
 
 	/**
 	 * Registered post selection changed listeners.
 	 */
-	private ListenerList postListeners = new ListenerList();
+	private ListenerList<ISelectionChangedListener> postListeners = new ListenerList<>();
 
 	/**
 	 * The multi-page editor.
@@ -89,7 +89,7 @@ public class MultiEditorSelectionProvider implements IPostSelectionProvider {
 
 	/**
 	 * Notifies all post selection changed listeners that the editor's selection has changed.
-	 * 
+	 *
 	 * @param event the event to propogate.
 	 * @since 3.2
 	 */
@@ -111,7 +111,7 @@ public class MultiEditorSelectionProvider implements IPostSelectionProvider {
 
 	/**
 	 * Returns the multi-page editor.
-	 * 
+	 *
 	 * @return the multi-page editor.
 	 */
 	public HenshinCPEditor getMultiPageEditor() {

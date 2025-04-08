@@ -140,7 +140,7 @@ public class LaxCond2AppCondAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param cond
 	 *            of LaxconditionPackage
 	 * @return
@@ -178,7 +178,7 @@ public class LaxCond2AppCondAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param arrayListNestedConstraints
 	 */
 	private void simplifyNestedConstraints(List<NestedConstraint> arrayListNestedConstraints) {
@@ -193,7 +193,7 @@ public class LaxCond2AppCondAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param translator
 	 * @param arrayListLaxConditions
 	 * @return
@@ -206,7 +206,6 @@ public class LaxCond2AppCondAction implements IObjectActionDelegate {
 			try {
 				conditionVarNames = mapCon2Var.get(condition);
 				Completer completer = new Completer(condition);
-				long timeNeeded = completer.complete();
 				NestedConstraint nestedConstraint = completer.getConstraint();
 				NestedCondition nestedCondition = nestedConstraint.getCondition();
 
@@ -222,7 +221,7 @@ public class LaxCond2AppCondAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param arrayListLaxConditions
 	 */
 	private void simplifyLaxConditions(List<Condition> arrayListLaxConditions) {
@@ -239,7 +238,7 @@ public class LaxCond2AppCondAction implements IObjectActionDelegate {
 	// TODO add variables to LaxCondition. I added. To be tested
 	/**
 	 * Add variables to the completed nested condition
-	 * 
+	 *
 	 * @param nestedCondition
 	 * @param conditionVarNames
 	 */
@@ -253,7 +252,7 @@ public class LaxCond2AppCondAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param date
 	 * @param nestedConstraintModel
 	 */
@@ -273,7 +272,7 @@ public class LaxCond2AppCondAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private boolean checkFile() {
@@ -285,7 +284,6 @@ public class LaxCond2AppCondAction implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
-	@SuppressWarnings("unchecked")
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection ss = (StructuredSelection) selection;

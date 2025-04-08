@@ -68,7 +68,7 @@ public class LaxCond2GCCommand {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param cond
 	 *            of LaxconditionPackage
 	 * @return
@@ -106,7 +106,7 @@ public class LaxCond2GCCommand {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param arrayListNestedConstraints
 	 */
 	private void simplifyNestedConstraints(NestedConstraint nestedconstrain) {
@@ -119,7 +119,7 @@ public class LaxCond2GCCommand {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param translator
 	 * @param arrayListLaxConditions
 	 * @return
@@ -130,7 +130,6 @@ public class LaxCond2GCCommand {
 		try {
 			conditionVarNames = mapCon2Var.get(condition);
 			Completer completer = new Completer(condition);
-			long timeNeeded = completer.complete();
 			nestedConstraint = completer.getConstraint();
 			NestedCondition nestedCondition = nestedConstraint.getCondition();
 
@@ -145,7 +144,7 @@ public class LaxCond2GCCommand {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param arrayListLaxConditions
 	 */
 	private void simplifyLaxCondition(Condition condition) {
@@ -159,7 +158,7 @@ public class LaxCond2GCCommand {
 
 	/**
 	 * Add variables to the completed nested condition
-	 * 
+	 *
 	 * @param nestedCondition
 	 * @param conditionVarNames
 	 */

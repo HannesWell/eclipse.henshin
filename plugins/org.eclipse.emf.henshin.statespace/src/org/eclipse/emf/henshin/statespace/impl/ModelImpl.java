@@ -1,8 +1,8 @@
 /**
  * <copyright>
- * Copyright (c) 2010-2014 Henshin developers. All rights reserved. 
- * This program and the accompanying materials are made available 
- * under the terms of the Eclipse Public License v1.0 which 
+ * Copyright (c) 2010-2014 Henshin developers. All rights reserved.
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0 which
  * accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
@@ -39,7 +39,7 @@ import org.eclipse.emf.henshin.statespace.util.ObjectKeyHelper;
  * @generated
  */
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
-	
+
 	/**
 	 * Constructor.
 	 * @param resource Resource for this model.
@@ -110,13 +110,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 		if (match != null) {
 			updateMatch(match, copier);
 		}
-		
+
 		// Copy the graph:
 		EGraph copiedGraph = null;
 		if (eGraph!=null) {
 			copiedGraph = eGraph.copy(copier);
 		}
-		
+
 		// Now create a new model.
 		ModelImpl copy = new ModelImpl(copiedResource, copiedGraph);
 
@@ -137,7 +137,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 						objectHashCodes.get(object));
 			}
 		}
-		
+
 		// Done.
 		return copy;
 
@@ -157,7 +157,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 			}
 		}
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -165,56 +165,56 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 
 		// Make sure the object keys map is not null.
 		getObjectKeysMap();
-		
+
 		// Remember whether there was a change:
 		boolean changed = false;
 
 		// Get the next free object Id:
 		byte[] usedIds = getUsedIds();
 		int nextId = 0;
-		
+
 		// Now set the keys for new objects:
 		TreeIterator<EObject> iterator = resource.getAllContents();
 		while (iterator.hasNext()) {
 			EObject object = iterator.next();
-				
+
 			// Get the current Id:
 			int currentId = ObjectKeyHelper.getObjectID(objectKeysMap.get(object));
-			
+
 			// Check if we need to create or change the key:
 			if (currentId==0 && identityTypes.contains(object.eClass())) {
-				
+
 				// Get the next free Id:
 				do {
 					nextId++;
 				} while (nextId<usedIds.length && usedIds[nextId]!=0);
-				
+
 				//System.out.println("Creating object id " + nextFreeId + " for object of type " + object.eClass().getName());
 				int objectKey = ObjectKeyHelper.createObjectKey(object.eClass(), nextId, identityTypes);
 				objectKeysMap.put(object, objectKey);
 				changed = true;
-			
+
 			} else if (currentId!=0 && !identityTypes.contains(object.eClass())) {
 				//System.out.println("Removing illegal object id for object of type " + object.eClass().getName());
-				objectKeysMap.remove(object);
+				objectKeysMap.removeKey(object);
 				changed = true;
 			}
-			
+
 		}
-		
+
 		// Done.
 		return changed;
-		
+
 	}
-	
+
 	/*
 	 * Get the next free object Id.
 	 */
 /*	private int getNextFreeId() {
-		
+
 		// Make sure the keys map is not null.
 		getObjectKeysMap();
-		
+
 		// Compute the next free object Id.
 		int nextFreeId = 1;
 		TreeIterator<EObject> iterator = resource.getAllContents();
@@ -224,10 +224,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 				nextFreeId = id+1;
 			}
 		}
-		
+
 		// Done.
 		return nextFreeId;
-		
+
 	}
 */
 
@@ -235,26 +235,26 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 	 * Get the used object Ids.
 	 */
 	private byte[] getUsedIds() {
-		
+
 		// Get the object keys as an array:
 		int[] values = getObjectKeys();
-		
+
 		// Get the ids and the maximum id:
 		int maxId = 0;
 		for (int i=0; i<values.length; i++) {
 			values[i] = ObjectKeyHelper.getObjectID(values[i]);
 			if (values[i]>maxId) maxId = values[i];
 		}
-		
+
 		// Create the used Ids array and mark the used Ids:
 		byte[] used = new byte[maxId+1];
 		for (int i=0; i<values.length; i++) {
 			used[values[i]] = 1;
 		}
-				
+
 		// Done.
 		return used;
-		
+
 	}
 
 	/**
@@ -301,7 +301,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 
 		// Make sure the object keys map is not null and empty it.
 		getObjectKeysMap().clear();
-		
+
 		// Copy the map contents of the integer array to the map:
 		TreeIterator<EObject> iterator = resource.getAllContents();
 		int index = 0;
@@ -334,7 +334,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 	/**
 	 * The default value of the '{@link #getResource() <em>Resource</em>}'
 	 * attribute.
-	 * 
+	 *
 	 * @see #getResource()
 	 * @generated
 	 * @ordered
@@ -344,7 +344,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 	/**
 	 * The cached value of the '{@link #getResource() <em>Resource</em>}'
 	 * attribute.
-	 * 
+	 *
 	 * @see #getResource()
 	 * @generated
 	 * @ordered
