@@ -3,10 +3,8 @@ package org.eclipse.emf.henshin.interpreter.ui.debug;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.ui.IDebugModelPresentation;
 import org.eclipse.debug.ui.IValueDetailListener;
-import org.eclipse.emf.henshin.interpreter.matching.conditions.HenshinBreakpoint;
-import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.emf.henshin.interpreter.matching.conditions.debug.HenshinBreakpoint;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorInput;
 
 public class DebugModelPresentation extends LabelProvider implements IDebugModelPresentation {

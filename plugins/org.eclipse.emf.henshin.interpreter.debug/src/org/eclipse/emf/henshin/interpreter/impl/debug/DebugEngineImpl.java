@@ -1,13 +1,15 @@
-package org.eclipse.emf.henshin.interpreter.impl;
+package org.eclipse.emf.henshin.interpreter.impl.debug;
 
+import java.util.HashSet;
 import java.util.Observer;
 
 import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.interpreter.Match;
 import org.eclipse.emf.henshin.interpreter.debug.HenshinDebugTarget;
+import org.eclipse.emf.henshin.interpreter.impl.EngineImpl;
 import org.eclipse.emf.henshin.interpreter.matching.conditions.ApplicationCondition;
-import org.eclipse.emf.henshin.interpreter.matching.conditions.DebugApplicationCondition;
-import org.eclipse.emf.henshin.interpreter.matching.conditions.TestDebugApplicationCondition;
+import org.eclipse.emf.henshin.interpreter.matching.conditions.debug.DebugApplicationCondition;
+import org.eclipse.emf.henshin.interpreter.matching.conditions.debug.TestDebugApplicationCondition;
 import org.eclipse.emf.henshin.model.Rule;
 
 public class DebugEngineImpl extends EngineImpl {
@@ -18,7 +20,7 @@ public class DebugEngineImpl extends EngineImpl {
 	public DebugApplicationCondition getDebugApplicationCondition(Rule rule, EGraph graph, Match partialMatch,
 			Observer matchObserver) {
 
-		matchFinder = (MatchFinder) new MatchGenerator(rule, graph, partialMatch).iterator();
+		matchFinder = new MatchFinder(rule, graph, partialMatch, new HashSet<>());
 		ApplicationCondition ac = matchFinder.getSolutionFinder();
 
 		// create a DebugApplicationCondition using the standard
@@ -32,7 +34,7 @@ public class DebugEngineImpl extends EngineImpl {
 	public TestDebugApplicationCondition getTestDebugApplicationCondition(Rule rule, EGraph graph, Match partialMatch,
 			Observer matchObserver) {
 
-		matchFinder = (MatchFinder) new MatchGenerator(rule, graph, partialMatch).iterator();
+		matchFinder = new MatchFinder(rule, graph, partialMatch, new HashSet<>());
 		ApplicationCondition ac = matchFinder.getSolutionFinder();
 
 		// create a DebugApplicationCondition using the standard

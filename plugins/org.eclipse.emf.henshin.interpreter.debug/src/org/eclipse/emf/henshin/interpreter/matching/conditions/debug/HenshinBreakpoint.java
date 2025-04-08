@@ -1,4 +1,4 @@
-package org.eclipse.emf.henshin.interpreter.matching.conditions;
+package org.eclipse.emf.henshin.interpreter.matching.conditions.debug;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
@@ -6,7 +6,7 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.IBreakpointManager;
 import org.eclipse.debug.core.model.Breakpoint;
 import org.eclipse.emf.henshin.HenshinModelPlugin;
-import org.eclipse.emf.henshin.interpreter.matching.conditions.DebugApplicationCondition.DebugLevel;
+import org.eclipse.emf.henshin.interpreter.matching.conditions.debug.DebugApplicationCondition.DebugLevel;
 
 public abstract class HenshinBreakpoint extends Breakpoint {
 		

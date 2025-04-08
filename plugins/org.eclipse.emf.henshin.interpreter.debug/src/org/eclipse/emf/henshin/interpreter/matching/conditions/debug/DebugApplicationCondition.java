@@ -1,4 +1,4 @@
-package org.eclipse.emf.henshin.interpreter.matching.conditions;
+package org.eclipse.emf.henshin.interpreter.matching.conditions.debug;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,6 +33,8 @@ import org.eclipse.emf.henshin.interpreter.debug.HenshinDebugValue;
 import org.eclipse.emf.henshin.interpreter.debug.HenshinDebugVariable;
 import org.eclipse.emf.henshin.interpreter.debug.HenshinStackFrame;
 import org.eclipse.emf.henshin.interpreter.info.RuleInfo;
+import org.eclipse.emf.henshin.interpreter.matching.conditions.ApplicationCondition;
+import org.eclipse.emf.henshin.interpreter.matching.conditions.IFormula;
 import org.eclipse.emf.henshin.interpreter.matching.constraints.AttributeConstraint;
 import org.eclipse.emf.henshin.interpreter.matching.constraints.BinaryConstraint;
 import org.eclipse.emf.henshin.interpreter.matching.constraints.ContainmentConstraint;
