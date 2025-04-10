@@ -24,7 +24,7 @@ pipeline {
 				always {
 					archiveArtifacts artifacts: '.*log,**/target/**/.*log', allowEmptyArchive: true
 					junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
-					discoverGitReferenceBuild referenceJob: 'eclipse.henshin/master'
+					discoverGitReferenceBuild referenceJob: 'try-outs.eclipse.henshin-hannes/master'
 					recordIssues enabledForFailure: true, publishAllIssues: true, ignoreQualityGate: true, tools: [
 							eclipse(name: 'Compiler', pattern: '**/target/compilelogs/*.xml'),
 							mavenConsole(),
@@ -42,12 +42,12 @@ pipeline {
 					sh '''
 						BUILD=nightly
 						SRC="p2updatesite/target/repository"
-						TRG="/home/data/httpd/download.eclipse.org/modeling/emft/henshin/updates/$BUILD"
+						TRG="/home/data/httpd/download.eclipse.org/technology/m2e/snapshots/try-outs/henshin/updates/$BUILD"
 
-						ssh genie.henshin@projects-storage.eclipse.org "rm -rf $TRG && mkdir -p $TRG"
+						ssh genie.m2e@projects-storage.eclipse.org "rm -rf $TRG && mkdir -p $TRG"
 
-						scp -r $SRC/* genie.henshin@projects-storage.eclipse.org:$TRG
-						ssh genie.henshin@projects-storage.eclipse.org ls -al $TRG
+						scp -r $SRC/* genie.m2e@projects-storage.eclipse.org:$TRG
+						ssh genie.m2e@projects-storage.eclipse.org ls -al $TRG
 					'''
 				}
 			}
