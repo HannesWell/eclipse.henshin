@@ -15,6 +15,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
+				//TODO: enable signing
 				sh '''
 					mvn clean verify -P strict-jdk,javadoc --fail-at-end -Dmaven.test.failure.ignore=true \
 						--batch-mode --no-transfer-progress --threads 1C
