@@ -22,7 +22,7 @@ public interface HenshinModelExporter {
 	/**
 	 * Perform an export operation.
 	 * @param module Module to be exported.
-	 * @param uri URI where the transformation system should be exported to.
+	 * @param uri2 URI where the transformation system should be exported to.
 	 */
 	IStatus doExport(Module module, URI uri);
 	

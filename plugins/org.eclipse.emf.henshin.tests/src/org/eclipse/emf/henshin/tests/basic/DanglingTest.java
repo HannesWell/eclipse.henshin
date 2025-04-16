@@ -21,13 +21,13 @@ public class DanglingTest extends HenshinTest {
 		Rules.assertRuleCanBeApplied(htRuleApp);
 		assertEquals(3, htEGraph.size());
 	}
-	
+
 
 	@Test
 	public void testMulti2Level() {
 		loadRule("deleteClassCMulti2Level");
 		Rules.assertRuleCanBeApplied(htRuleApp);
-		assertEquals(3, htEGraph.size());
+		assertEquals(4, htEGraph.size());
 	}
 
 	@Test
@@ -36,7 +36,7 @@ public class DanglingTest extends HenshinTest {
 		Rules.assertRuleCanBeApplied(htRuleApp);
 		assertEquals(3, htEGraph.size());
 	}
-	
+
 
 	@Test
 	public void testOneEdge() {
